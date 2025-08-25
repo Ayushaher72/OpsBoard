@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { createUser } from "../services/userService";
-import { createUser } from "../features/users/services/userService";
+import { createUser } from "../services/userService";
 
 export default function UserForm({ onUserCreated }) {
   const [name, setName] = useState("");

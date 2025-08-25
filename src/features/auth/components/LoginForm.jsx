@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../slices/authSlice';
 import { loginService } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 import './LoginForm.css'
 
@@ -9,6 +10,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ const LoginForm = () => {
   };
 
   return (
+    <>
       <form className="login-form" onSubmit={handleSubmit}>
         {error && <p className="error-message">{error}</p>}
 
@@ -54,7 +57,13 @@ const LoginForm = () => {
         <button type="submit" className="login-btn">
           Login
         </button>
+        
       </form>
+       <button className="home-btn register-btn1" onClick={() => navigate('/registration')}>
+            create an account
+          </button>
+      </>
+      
   );
 };
 

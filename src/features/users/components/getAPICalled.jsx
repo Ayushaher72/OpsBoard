@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import { getUsers } from "../services/userService";
-import { getUsers } from "../features/users/services/userService";
+import { getUsers } from "../services/userService";
 // import UserForm from "./UserForm";
 import UserForm from "./postAPICalled";
 
