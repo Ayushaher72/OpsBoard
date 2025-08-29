@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './registration.css'
+import styles from './registration.module.css'
 
 export default function RegisterForm() {
     const [username, setUsername] = useState("");
@@ -48,14 +48,14 @@ export default function RegisterForm() {
     };
 
     return (
-        <div className="register-container">
-            <form className="register-card" onSubmit={handleSubmit}>
-                <h2 className="title">Create Account</h2>
+        <div className={styles.registercontainer}>
+            <form className={styles.registercard} onSubmit={handleSubmit}>
+                <h2 className={styles.title}>Create Account</h2>
 
-                {error && <p className="error-message">{error}</p>}
-                {success && <p className="success-message">{success}</p>}
+                {error && <p className={styles.errormessage}>{error}</p>}
+                {success && <p className={styles.successmessage}>{success}</p>}
 
-                <div className="form-group">
+                <div className={styles.formgroup}>
                     <label>Username</label>
                     <input
                         type="text"
@@ -66,7 +66,7 @@ export default function RegisterForm() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formgroup}>
                     <label>Password</label>
                     <input
                         type="password"
@@ -77,7 +77,7 @@ export default function RegisterForm() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formgroup}>
                     <label>Confirm Password</label>
                     <input
                         type="password"
@@ -88,11 +88,11 @@ export default function RegisterForm() {
                     />
                 </div>
 
-                <button type="submit" className="register-btn" disabled={loading}>
+                <button type="submit" className={styles.registerbtn} disabled={loading}>
                     {loading ? "Registering..." : "Register"}
                 </button>
 
-                <p className="login-link">
+                <p className={styles.loginlink}>
                     Already have an account? <a href="/login">Login</a>
                 </p>
             </form>

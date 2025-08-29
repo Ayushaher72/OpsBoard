@@ -1,12 +1,12 @@
-.register-container {
+.registercontainer {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
+  /* background: linear-gradient(to right, #6a11cb, #2575fc); */
 }
 
-.register-card {
+.registercard {
   background: #fff;
   padding: 40px 30px;
   border-radius: 12px;
@@ -20,12 +20,12 @@
   color: #333;
 }
 
-.form-group {
+.formgroup {
   margin-bottom: 15px;
   text-align: left;
 }
 
-.form-group label {
+.formgroup label {
   display: block;
   font-size: 14px;
   font-weight: 500;
@@ -33,7 +33,7 @@
   color: #444;
 }
 
-.form-group input {
+.formgroup input {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
@@ -42,11 +42,11 @@
   transition: border 0.3s;
 }
 
-.form-group input:focus {
+.formgroup input:focus {
   border-color: #2575fc;
 }
 
-.register-btn {
+.registerbtn {
   background: #2575fc;
   color: white;
   border: none;
@@ -58,28 +58,28 @@
   transition: 0.3s;
 }
 
-.register-btn:hover {
+.registerbtn:hover {
   background: #1a5edb;
 }
 
-.error-message {
+.errormessage {
   color: red;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.success-message {
+.successmessage {
   color: green;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.login-link {
+.loginlink {
   margin-top: 15px;
   font-size: 14px;
 }
 
-.login-link a {
+.loginlink a {
   color: #2575fc;
   text-decoration: none;
   font-weight: bold;

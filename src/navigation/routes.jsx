@@ -5,8 +5,10 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import Registration from '../pages/registration';
-import UserList from '../features/users/components/getAPICalled';
+// import UserList from '../features/users/components/getAPICalled';
 import FormComponent from '../features/users/components/FormComponent';
+import UserList from '../features/users/components/CRUD';
+
 
 const AppRoutes = () => (
   <Routes>

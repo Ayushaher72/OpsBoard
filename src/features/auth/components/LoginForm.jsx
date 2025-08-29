@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../slices/authSlice';
 import { loginService } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
-
-import './LoginForm.css'
+import styles from'./LoginForm.module.css'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -31,10 +30,10 @@ const LoginForm = () => {
 
   return (
     <>
-      <form className="login-form" onSubmit={handleSubmit}>
-        {error && <p className="error-message">{error}</p>}
+      <form className={styles["login-form"]} onSubmit={handleSubmit}>
+        {error && <p className={styles["error-message"]}>{error}</p>}
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>Email</label>
           <input
             type="email"
@@ -44,7 +43,7 @@ const LoginForm = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>Password</label>
           <input
             type="password"
@@ -54,12 +53,12 @@ const LoginForm = () => {
           />
         </div>
 
-        <button type="submit" className="login-btn">
+        <button type="submit" className={styles["login-btn"]}>
           Login
         </button>
         
       </form>
-       <button className="home-btn register-btn1" onClick={() => navigate('/registration')}>
+       <button className={`${styles["home-btn"]} ${styles["register-btn11"]}`} onClick={() => navigate('/registration')}>
             create an account
           </button>
       </>

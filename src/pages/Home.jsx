@@ -1,20 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './home.css'
+import styles from './home.module.css'
 
 
 export default function Home() {
 const navigate = useNavigate();
 
 return (
-    <div className="home-container">
-      <div className="overlay">
-        <h1 className="home-title">Welcome to OpsBoard 🚀</h1>
-        <div className="button-group">
-          <button className="home-btn login-btn1" onClick={() => navigate('/login')}>
+    <div className={styles.homecontainer}>
+      <div className={styles.overlay}>
+        <h1 className={styles.hometitle}>Welcome to OpsBoard 🚀</h1>
+        <div className={styles.buttongroup}>
+          <button className={`${styles.homebtn} ${styles.loginbtn1}`} onClick={() => navigate('/login')}>
             Login
           </button>
-          <button className="home-btn register-btn1" onClick={() => navigate('/registration')}>
+          <button className={`${styles.homebtn} ${styles.registerbtn1}`} onClick={() => navigate('/registration')}>
             Register
           </button>
         </div>
