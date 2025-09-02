@@ -1,0 +1,86 @@
+.registercontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* background: linear-gradient(to right, #6a11cb, #2575fc); */
+}
+
+.registercard {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.formgroup {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.formgroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.formgroup input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.formgroup input:focus {
+  border-color: #2575fc;
+}
+
+.registerbtn {
+  background: #2575fc;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.registerbtn:hover {
+  background: #1a5edb;
+}
+
+.errormessage {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.successmessage {
+  color: green;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.loginlink {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.loginlink a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: bold;
+}
