@@ -1,0 +1,87 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 240px;
+  background: #0f172a;           /* slate-900 */
+  color: #e2e8f0;                 /* slate-200 */
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  transition: width 0.2s ease;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.collapsed {
+  width: 52px;
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;                 /* slate-400 */
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 8px;
+}
+.toggleBtn:hover {
+  background: rgba(255,255,255,0.06);
+  color: #cbd5e1;                 /* slate-300 */
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  margin-bottom: 8px;
+}
+.logo {
+  font-size: 22px;
+}
+.brandText {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  color: #cbd5e1;                 /* slate-300 */
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.link:hover {
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+}
+
+.active {
+  background: #1e293b;            /* slate-800 */
+  color: #ffffff;
+}
+
+.icon {
+  font-size: 18px;
+  flex: 0 0 18px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 8px 0;
+}
