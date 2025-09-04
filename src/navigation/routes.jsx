@@ -12,15 +12,15 @@ import UserList from '../features/users/components/CRUD';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/home" element={<Home />} />
+    <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route path="/registration" element={<Registration />} />
 
-
     <Route path="/dashboard" element={<MainLayout><Dashboard /></MainLayout>} />
-    <Route path="/notfound" element={<NotFound />} />
+    <Route path="/notfound" element={<MainLayout><NotFound /></MainLayout>} />
     <Route path="/userlist" element={<MainLayout><UserList /></MainLayout>} />
     <Route path="/form" element={<MainLayout><FormComponent /></MainLayout>} />
+
   </Routes>
 );
 

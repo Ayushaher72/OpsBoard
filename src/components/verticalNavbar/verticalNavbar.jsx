@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FiHome, FiUser, FiSettings, FiLogIn, FiMenu } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import { FiHome, FiUser, FiSettings, FiLogIn, FiMenu, FiShield } from "react-icons/fi";
 import styles from "./VerticalNavbar.module.css";
 
 export default function VerticalNavbar() {
     const [collapsed, setCollapsed] = useState(false);
+    const { user, isAuthenticated } = useSelector((state) => state.auth);
 
     return (
         <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
@@ -36,15 +38,30 @@ export default function VerticalNavbar() {
                     {!collapsed && <span>Home</span>}
                 </NavLink>
 
-                <NavLink
-                    to="/profile"
-                    className={({ isActive }) =>
-                        `${styles.link} ${isActive ? styles.active : ""}`
-                    }
-                >
-                    <FiUser className={styles.icon} />
-                    {!collapsed && <span>Profile</span>}
-                </NavLink>
+                {isAuthenticated && (
+                    <NavLink
+                        to="/profile"
+                        className={({ isActive }) =>
+                            `${styles.link} ${isActive ? styles.active : ""}`
+                        }
+                    >
+                        <FiUser className={styles.icon} />
+                        {!collapsed && <span>Profile</span>}
+                    </NavLink>
+                )}
+
+                {/* Only show for Admin */}
+                {isAuthenticated && user?.role === "admin" && (
+                    <NavLink
+                        to="/admin"
+                        className={({ isActive }) =>
+                            `${styles.link} ${isActive ? styles.active : ""}`
+                        }
+                    >
+                        <FiShield className={styles.icon} />
+                        {!collapsed && <span>Admin Panel</span>}
+                    </NavLink>
+                )}
 
                 <NavLink
                     to="/settings"
@@ -58,15 +75,22 @@ export default function VerticalNavbar() {
 
                 <div className={styles.divider} />
 
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                        `${styles.link} ${isActive ? styles.active : ""}`
-                    }
-                >
-                    <FiLogIn className={styles.icon} />
-                    {!collapsed && <span>Login</span>}
-                </NavLink>
+                {!isAuthenticated ? (
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) =>
+                            `${styles.link} ${isActive ? styles.active : ""}`
+                        }
+                    >
+                        <FiLogIn className={styles.icon} />
+                        {!collapsed && <span>Login</span>}
+                    </NavLink>
+                ) : (
+                    <button className={styles.link} onClick={() => alert("Logout logic")}>
+                        <FiLogIn className={styles.icon} />
+                        {!collapsed && <span>Logout</span>}
+                    </button>
+                )}
             </nav>
         </aside>
     );

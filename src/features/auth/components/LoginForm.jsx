@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../slices/authSlice';
 import { loginService } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
-import styles from'./LoginForm.module.css'
+import styles from './LoginForm.module.css'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -56,13 +56,13 @@ const LoginForm = () => {
         <button type="submit" className={styles["login-btn"]}>
           Login
         </button>
-        
+
       </form>
-       <button className={`${styles["home-btn"]} ${styles["register-btn11"]}`} onClick={() => navigate('/registration')}>
-            create an account
-          </button>
-      </>
-      
+      <button className={`${styles["home-btn"]} ${styles["register-btn11"]}`} onClick={() => navigate('/registration')}>
+        create an account
+      </button>
+    </>
+
   );
 };
 
