@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+// import { logout } from "../features/auth/slices/authSlice";
 import { FiHome, FiUser, FiSettings, FiLogIn, FiMenu, FiShield } from "react-icons/fi";
 import styles from "./VerticalNavbar.module.css";
 
 export default function VerticalNavbar() {
     const [collapsed, setCollapsed] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { user, isAuthenticated } = useSelector((state) => state.auth);
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate("/login");
+    };
 
     return (
         <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
-            {/* Toggle */}
+            {/* Toggle Button */}
             <button
                 className={styles.toggleBtn}
                 onClick={() => setCollapsed((c) => !c)}
@@ -19,7 +27,7 @@ export default function VerticalNavbar() {
                 <FiMenu />
             </button>
 
-            {/* Brand / Logo */}
+            {/* Brand */}
             <div className={styles.brand}>
                 <span className={styles.logo}>🧭</span>
                 {!collapsed && <span className={styles.brandText}>MyApp</span>}
@@ -27,19 +35,19 @@ export default function VerticalNavbar() {
 
             {/* Nav Items */}
             <nav className={styles.nav}>
-                <NavLink
-                    to="/"
-                    end
-                    className={({ isActive }) =>
-                        `${styles.link} ${isActive ? styles.active : ""}`
-                    }
-                >
-                    <FiHome className={styles.icon} />
-                    {!collapsed && <span>Home</span>}
-                </NavLink>
-
-                {isAuthenticated && (
+                {isAuthenticated && user?.role === "developer" && (
                     <NavLink
+                        to="/"
+                        end
+                        className={({ isActive }) =>
+                            `${styles.link} ${isActive ? styles.active : ""}`
+                        }
+                    > 
+                        <FiHome className={styles.icon} />
+                        {!collapsed && <span>Home</span>}
+                    </NavLink>,
+
+                      <NavLink
                         to="/profile"
                         className={({ isActive }) =>
                             `${styles.link} ${isActive ? styles.active : ""}`
@@ -48,9 +56,10 @@ export default function VerticalNavbar() {
                         <FiUser className={styles.icon} />
                         {!collapsed && <span>Profile</span>}
                     </NavLink>
+
+                    
                 )}
 
-                {/* Only show for Admin */}
                 {isAuthenticated && user?.role === "admin" && (
                     <NavLink
                         to="/admin"
@@ -86,7 +95,10 @@ export default function VerticalNavbar() {
                         {!collapsed && <span>Login</span>}
                     </NavLink>
                 ) : (
-                    <button className={styles.link} onClick={() => alert("Logout logic")}>
+                    <button
+                        className={styles.link}
+                        onClick={handleLogout}
+                    >
                         <FiLogIn className={styles.icon} />
                         {!collapsed && <span>Logout</span>}
                     </button>

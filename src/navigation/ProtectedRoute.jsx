@@ -9,6 +9,9 @@ export default function ProtectedRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  // If using nested routes -> render <Outlet>
-  return children ? children : <Outlet />;
+  if (rolesAllowed.length && !rolesAllowed.includes(user.role)) {
+    return <Navigate to="/not-authorized" replace />;  // Create this page if needed
+  }
+
+  return children;
 }
