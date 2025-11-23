@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../slices/authSlice';
-import { loginService } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
-import styles from'./LoginForm.module.css'
+import styles from './LoginForm.module.css';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();  // ⚡ Make sure to call this!
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,10 +20,11 @@ const LoginForm = () => {
       return;
     }
 
-    // Example auth logic (replace with API later)
-    if (email === 'test@example.com' && password === '123456') {
-      alert('✅ Login Successful!');
+    // Simple hardcoded auth logic
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      dispatch(login({ username: 'developer', role: 'developer' }));
       setError('');
+      navigate('/dashboard');
     } else {
       setError('Invalid credentials ⚠️');
     }
@@ -56,13 +58,15 @@ const LoginForm = () => {
         <button type="submit" className={styles["login-btn"]}>
           Login
         </button>
-        
       </form>
-       <button className={`${styles["home-btn"]} ${styles["register-btn11"]}`} onClick={() => navigate('/registration')}>
-            create an account
-          </button>
-      </>
-      
+
+      <button
+        className={`${styles["home-btn"]} ${styles["register-btn11"]}`}
+        onClick={() => navigate('/registration')}
+      >
+        Create an account
+      </button>
+    </>
   );
 };
 
